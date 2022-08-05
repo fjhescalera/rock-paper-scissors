@@ -9,23 +9,54 @@
 <body>
 
     <script>
-        console.log("Hello World!")
-        function getComputerChoice(choice){
+        function getComputerChoice(){   
             let randomNum=Math.floor(Math.random()*9);
-            console.log(randomNum);
-            console.log(typeof randomNum);
+            /*console.log(randomNum);
+              console.log(typeof randomNum);USED TO CHECK IF CHOICE ERROR WAS DUE TO WRONG TYPE OF RANDOMNUM,NO*/
             if (randomNum===0||randomNum===1||randomNum===2){
-
-                console.log("Rock");
+                /*console.log("Rock");*/
+                return choice="Rock";
             }
             else if (randomNum===3||randomNum===4||randomNum===5){
-                console.log("Paper");
+                /*console.log("Paper");*/
+                return choice="Paper";
             }
             else{
-                console.log("Scissors");
+                /*console.log("Scissors");*/
+                return choice="Scissors";
             }
-    
         }
+        function getPlayerChoice(/*playerChoice*/){   
+            let playerChoice = prompt("What do you play? Rock, paper or scissors?");
+            if (playerChoice.toLowerCase().trim()==="rock"){
+                return "Rock";
+            }
+            else if (playerChoice.toLowerCase().trim()==="paper"){
+                return "Paper";
+            }
+            else if (playerChoice.toLowerCase().trim()==="scissors"){
+                return "Scissors"
+            }
+            else {
+                alert("That's not a valid option! Try again");
+                getPlayerChoice();
+            }
+        }
+        function playRound(){
+            computerChoice=getComputerChoice();
+            playerChoice=getPlayerChoice();
+            alert(`Computer chose ${computerChoice} and you chose ${playerChoice}, let's see...`)
+            if (playerChoice===computerChoice){
+                return "Tie!"
+            }
+            else if ((playerChoice==="Rock"&&computerChoice==="Scissors")||(playerChoice==="Paper"&&computerChoice==="Rock")||(playerChoice==="Scissors"&&computerChoice==="Paper")){
+                return "Winner!"
+            }
+            else {
+                return "Loser!"
+            }
+        }
+
     </script>
 
 </body>
