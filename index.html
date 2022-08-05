@@ -47,16 +47,35 @@
             playerChoice=getPlayerChoice();
             alert(`Computer chose ${computerChoice} and you chose ${playerChoice}, let's see...`)
             if (playerChoice===computerChoice){
-                return "Tie!"
+                return result="tie!"
             }
             else if ((playerChoice==="Rock"&&computerChoice==="Scissors")||(playerChoice==="Paper"&&computerChoice==="Rock")||(playerChoice==="Scissors"&&computerChoice==="Paper")){
-                return "Winner!"
+                return result="winner!"
             }
             else {
-                return "Loser!"
+                return result="loser!"
             }
         }
+        function game(){
+            let score=0;
+            for (let i=0;i<=4;i++){
+                playRound();
+                if (result==="winner!"){
+                    score++;
+                }
+                else if (result==="loser!"){
+                    score=score-1
+                }
+                alert(`Your score is ${score}`);
 
+            }
+            if(score>=3){
+                alert(`You won ${score} out of 5 rounds gz!`);
+            }
+            else{
+                alert("Computer beat you...better luck next time");
+            }
+        }
     </script>
 
 </body>
