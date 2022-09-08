@@ -15,36 +15,76 @@ function getComputerChoice(){
         return choice="scissors";
     }
 }
+let playerScore=0;
+let computerScore=0;
+let player=document.querySelector(".player");
+let computer=document.querySelector(".computer");
 let buttons=document.querySelectorAll("button");
-let result=document.querySelector("div");
+let result=document.querySelector(".result");
+let score=document.querySelector(".score");
 buttons.forEach(button=>button.addEventListener("click",playRound.bind(button)));
-
+function checkScore(){
+    if(playerScore>=5){
+        alert(`El juego terminó ganaste ${playerScore}-${computerScore}!`)
+        playerScore=0;
+        computerScore=0;
+}
+    else if(computerScore>=5){
+        alert(`El juego terminó gano la pc ${computerScore}-${playerScore} :(`);
+        playerScore=0;
+        computerScore=0;
+    }
+}
 function playRound(){
     computerChoice=getComputerChoice();
     playerChoice=this.classList.value;
     alert(`Computer chose ${computerChoice} and you chose ${playerChoice}, let's see...`)
     if (playerChoice===computerChoice){
-        result.style.borderStyle='solid';
-        result.style.borderColor='black';
-        result.style.backgroundColor='blue';
-        result.style.color='white';
-        result.textContent='tie!';
+        tiedGame();
+        updateScore();
+        checkScore(); 
     }
     else if ((playerChoice==="rock"&&computerChoice==="scissors")||(playerChoice==="paper"&&computerChoice==="rock")||
             (playerChoice==="scissors"&&computerChoice==="paper")){
-                result.style.borderStyle='solid';
-                result.style.borderColor='black';
-                result.style.backgroundColor='green';
-                result.style.color="white";
-                result.textContent="win!";
+         wonGame();
+         updateScore();
+         checkScore();       
     }
     else {
-        result.style.borderStyle='solid';
-        result.style.borderColor='black';
-        result.style.backgroundColor='red';
-        result.style.color="white";
-        result.textContent="loser!";
+        lostGame();
+        updateScore();
+        checkScore(); 
     }
+}
+function tiedGame(){
+    result.style.borderStyle='solid';
+    result.style.borderColor='white';
+    result.style.backgroundColor='blue';
+    result.style.color='white';
+    result.textContent='It\'s a tie!';
+    playerScore+=1;
+    computerScore+=1;
+}
+function wonGame(){
+    result.style.borderStyle='solid';
+    result.style.borderColor='black';
+    result.style.backgroundColor='green';
+    result.style.color="white";
+    result.textContent="You win!";
+    playerScore+=1;
+}
+function lostGame(){
+    result.style.borderStyle='solid';
+    result.style.borderColor='black';
+    result.style.backgroundColor='red';
+    result.style.color="white";
+    result.textContent="You lose this round";
+    computerScore+=1;
+}
+function updateScore(){
+    score.textContent=`The score is:`;
+    player.textContent=`Player:${playerScore}`;
+    computer.textContent=`PC: ${computerScore}`;
 }
 function game(){
     let score=0;
