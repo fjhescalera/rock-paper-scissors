@@ -16,38 +16,34 @@ function getComputerChoice(){
     }
 }
 let buttons=document.querySelectorAll("button");
+let result=document.querySelector("div");
 buttons.forEach(button=>button.addEventListener("click",playRound.bind(button)));
-
-/*function getPlayerChoice(){   
-    let playerChoice = prompt("What do you play? Rock, paper or scissors?");
-    if (playerChoice.toLowerCase().trim()==="rock"){
-        return "Rock";
-    }
-    else if (playerChoice.toLowerCase().trim()==="paper"){
-        return "Paper";
-    }
-    else if (playerChoice.toLowerCase().trim()==="scissors"){
-        return "Scissors"
-    }
-    else {
-        alert("That's not a valid option! Try again");
-        return getPlayerChoice();
-}*/
 
 function playRound(){
     computerChoice=getComputerChoice();
-    console.log(this.classList.value);
     playerChoice=this.classList.value;
     alert(`Computer chose ${computerChoice} and you chose ${playerChoice}, let's see...`)
     if (playerChoice===computerChoice){
-        console.log("tie!");
+        result.style.borderStyle='solid';
+        result.style.borderColor='black';
+        result.style.backgroundColor='blue';
+        result.style.color='white';
+        result.textContent='tie!';
     }
     else if ((playerChoice==="rock"&&computerChoice==="scissors")||(playerChoice==="paper"&&computerChoice==="rock")||
             (playerChoice==="scissors"&&computerChoice==="paper")){
-        console.log("winner!");
+                result.style.borderStyle='solid';
+                result.style.borderColor='black';
+                result.style.backgroundColor='green';
+                result.style.color="white";
+                result.textContent="win!";
     }
     else {
-        console.log("loser!")
+        result.style.borderStyle='solid';
+        result.style.borderColor='black';
+        result.style.backgroundColor='red';
+        result.style.color="white";
+        result.textContent="loser!";
     }
 }
 function game(){
@@ -70,5 +66,21 @@ function game(){
         alert("Computer beat you...better luck next time");
     }
 }
+
+/*function getPlayerChoice(){   
+    let playerChoice = prompt("What do you play? Rock, paper or scissors?");
+    if (playerChoice.toLowerCase().trim()==="rock"){
+        return "Rock";
+    }
+    else if (playerChoice.toLowerCase().trim()==="paper"){
+        return "Paper";
+    }
+    else if (playerChoice.toLowerCase().trim()==="scissors"){
+        return "Scissors"
+    }
+    else {
+        alert("That's not a valid option! Try again");
+        return getPlayerChoice();
+}*/
 
 
