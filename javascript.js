@@ -25,7 +25,8 @@ let score=document.querySelector(".score");
 buttons.forEach(button=>button.addEventListener("click",playRound.bind(button)));
 function checkScore(){
     if(playerScore>=5){
-        alert(`El juego terminó ganaste ${playerScore}-${computerScore}!`);
+        alert(`YOU WIN!! ${playerScore}-${computerScore}!`);
+        result.textContent="";
         score.textContent=`The final score is:`;
         player.textContent=`Player:${playerScore}`;
         computer.textContent=`PC: ${computerScore}`;
@@ -33,7 +34,8 @@ function checkScore(){
         computerScore=0;
 }
     else if(computerScore>=5){
-        alert(`El juego terminó gano la pc ${computerScore}-${playerScore} :(`);
+        alert(`GAME OVER ${computerScore}-${playerScore} :(`);
+        result.textContent="";
         score.textContent=`The final score is:`;
         player.textContent=`Player:${playerScore}`;
         computer.textContent=`PC: ${computerScore}`;
@@ -84,7 +86,7 @@ function lostGame(){
     result.style.borderColor='black';
     result.style.backgroundColor='red';
     result.style.color="white";
-    result.textContent="You lose this round";
+    result.textContent="You lose :(";
     computerScore+=1;
 }
 function updateScore(){
