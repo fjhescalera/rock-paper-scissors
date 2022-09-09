@@ -25,12 +25,18 @@ let score=document.querySelector(".score");
 buttons.forEach(button=>button.addEventListener("click",playRound.bind(button)));
 function checkScore(){
     if(playerScore>=5){
-        alert(`El juego terminó ganaste ${playerScore}-${computerScore}!`)
+        alert(`El juego terminó ganaste ${playerScore}-${computerScore}!`);
+        score.textContent=`The final score is:`;
+        player.textContent=`Player:${playerScore}`;
+        computer.textContent=`PC: ${computerScore}`;
         playerScore=0;
         computerScore=0;
 }
     else if(computerScore>=5){
         alert(`El juego terminó gano la pc ${computerScore}-${playerScore} :(`);
+        score.textContent=`The final score is:`;
+        player.textContent=`Player:${playerScore}`;
+        computer.textContent=`PC: ${computerScore}`;
         playerScore=0;
         computerScore=0;
     }
@@ -86,7 +92,7 @@ function updateScore(){
     player.textContent=`Player:${playerScore}`;
     computer.textContent=`PC: ${computerScore}`;
 }
-function game(){
+/*function game(){
     let score=0;
     for (let i=0;i<=4;i++){
         playRound();
@@ -105,7 +111,7 @@ function game(){
     else{
         alert("Computer beat you...better luck next time");
     }
-}
+}*/
 
 /*function getPlayerChoice(){   
     let playerChoice = prompt("What do you play? Rock, paper or scissors?");
