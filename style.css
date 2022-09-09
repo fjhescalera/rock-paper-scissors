@@ -36,6 +36,6 @@ body{
     justify-content: space-around;
     align-items: center;
 }
-.player,.computer{
+.player,.computer,.score,.title{
     text-align: center;
 }

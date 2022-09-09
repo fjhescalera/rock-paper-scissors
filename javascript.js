@@ -22,12 +22,14 @@ let computer=document.querySelector(".computer");
 let buttons=document.querySelectorAll("button");
 let result=document.querySelector(".result");
 let score=document.querySelector(".score");
+let title=document.querySelector(".title");
 buttons.forEach(button=>button.addEventListener("click",playRound.bind(button)));
 function checkScore(){
     if(playerScore>=5){
         alert(`YOU WIN!! ${playerScore}-${computerScore}!`);
         result.textContent="";
         score.textContent=`The final score is:`;
+        title.textContent=`Click to play again:`;
         player.textContent=`Player:${playerScore}`;
         computer.textContent=`PC: ${computerScore}`;
         playerScore=0;
@@ -37,6 +39,7 @@ function checkScore(){
         alert(`GAME OVER ${computerScore}-${playerScore} :(`);
         result.textContent="";
         score.textContent=`The final score is:`;
+        title.textContent=`Click to play again:`;
         player.textContent=`Player:${playerScore}`;
         computer.textContent=`PC: ${computerScore}`;
         playerScore=0;
@@ -46,6 +49,7 @@ function checkScore(){
 function playRound(){
     computerChoice=getComputerChoice();
     playerChoice=this.classList.value;
+    title.textContent=`Chose a shape:`;
     alert(`Computer chose ${computerChoice} and you chose ${playerChoice}, let's see...`)
     if (playerChoice===computerChoice){
         tiedGame();
